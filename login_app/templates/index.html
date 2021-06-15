@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Home</title>
+</head> 
+<body>
+<div class="registration" class="form-group">
+    <h1>Registration</h1>
+    {% if messages %}
+        <ul class="messages">    
+            {% for message in messages %}    
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <form action="/register" method="POST">
+        {% csrf_token %}
+        <div class="form-control-sm">
+            <label for="first_name" id="first_name">First Name:</label>
+            <input type="text" name="first_name" class="col-form-label-sm form form-control-sm" placeholder="First Name">
+        </div>
+
+        <div class="form-control-sm">
+            <label for="last_name" id="last_name">Last Name:</label>
+            <input type="text" name="last_name" class="col-form-label-sm" placeholder="Last Name">
+        </div>
+
+        <div class="form-control-sm">
+            <label for="email" id="email">Email:</label>
+            <input type="email" name="email" class="col-form-label-sm" placeholder="Email">
+        </div>
+
+        <div class="form-control-sm">
+            <label for="password" id="password">Password:</label>
+            <input type="password" name="password" class="col-form-label-sm" placeholder="Password">
+        </div>
+
+        <div class="form-control-sm">
+            <label for="pw_confirm" id="pw_confirm">Confirm PW:</label>
+            <input type="password" name="pw_confirm" class="col-form-label-sm" placeholder="Confirm Password">
+        </div>
+
+        <div class="form-control-sm">
+            <button class="button btn-primary">Register</button>
+        </div>
+    </form>
+</div>
+
+<div class="login" class="form-group">
+    <h1>Log in</h1>
+    {% if messages %}
+        <ul class="messages">    
+            {% for message in messages %}    
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <form action="/login" method="POST">
+        {% csrf_token %}
+        <div class="form-control-sm">
+            <label for="email" id="email">Email:</label>
+            <input type="email" name="email" class="col-form-label-sm form-control-sm" placeholder="Email">
+        </div>
+
+        <div class="form-control-sm">
+            <label for="password" id="password">Password:</label>
+            <input type="password" name="password" class="col-form-label-sm form-control-sm" placeholder="password">
+        </div>
+
+        <div class="form-control-sm">
+        <button class="button btn-primary">Log In</button>
+        </div>
+    </form>
+</div>
+<div class="img">
+    <img src="https://i.pinimg.com/originals/0f/f5/33/0ff5333d0ca49c733e0c4d4cdce77754.png" alt="rocketship">
+</div>
+</body>
+</html>
