@@ -44,4 +44,6 @@ class User(models.Model):
     email= models.EmailField()
     password= models.CharField(max_length=60)
     pw_confirm= models.CharField(max_length=60)
+    created_at= models.DateTimeField(auto_now_add=True)
+    updated_at= models.DateTimeField(auto_now=True)
     objects= UserManager()
