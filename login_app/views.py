@@ -10,7 +10,7 @@ def register(request):
     if request.method == "POST":
         errors = User.objects.validator(request.POST)
         if len(errors) > 0:
-            for value in errors.items():
+            for key, value in errors.items():
                 messages.error(request, value)
             return redirect('/')
         else:
@@ -21,7 +21,7 @@ def register(request):
                 email = request.POST['email'],
                 password = hashed_pw,
             )
-            request.session['user_id'] = new_user.id
+            request.session['user'] = new_user.id
             return redirect('/success')
     return redirect('/')
 
